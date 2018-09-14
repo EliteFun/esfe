@@ -29,25 +29,25 @@ void Game::gameLoop()
         {
             if (event.type == sf::Event::Closed)
                 window.close();
-            stateManager.onEvent(event);
+            sceneManager.onEvent(event);
         }
         
         sf::Time elapsed = clock.restart();
         float dt = elapsed.asMilliseconds();
         timeSinceLastUpdate += elapsed;
         
-        stateManager.update(dt);
+        sceneManager.update(dt);
         
         while (timeSinceLastUpdate.asMilliseconds() > 1000 / m_framerate)
         {
             timeSinceLastUpdate -= sf::milliseconds(1000 / m_framerate);
-            
-            stateManager.timedUpdate(dt);
-            stateManager.lateUpdate(dt);
+
+            sceneManager.timedUpdate(dt);
+            sceneManager.lateUpdate(dt);
         }
         
         window.clear(m_clearColor);
-        stateManager.draw(dt);
+        sceneManager.draw(dt);
         window.display();
     }
 }

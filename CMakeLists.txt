@@ -65,7 +65,7 @@ project(${PROJECT_NAME})
 include_directories("${CMAKE_SOURCE_DIR}/include" "${SFML_ROOT}/include")
 
 # Add an executable
-add_executable(${PROJECT_NAME} ${SOURCE_FILES} ${UTIL_SOURCE_FILES} ${GRAPHICS_SOURCE_FILES} ${GUI_SOURCE_FILES})
+add_executable(${PROJECT_NAME} ${SOURCE_FILES} ${CORE_SOURCE_FILES} ${UTIL_SOURCE_FILES} ${GRAPHICS_SOURCE_FILES} ${GUI_SOURCE_FILES})
 
 # Add the library
 # add_library(${PROJECT_NAME} ${CORE_SOURCE_FILES} ${UTIL_SOURCE_FILES} ${GRAPHICS_SOURCE_FILES})
@@ -77,7 +77,7 @@ target_link_libraries(${PROJECT_NAME} stdc++fs gdi32)
 # set(SFML_STATIC_LIBRARIES TRUE)
 
 ## In most cases better set in the CMake cache
-# set(SFML_DIR "<sfml root prefix>/lib/cmake/SFML")
+set(SFML_DIR "${SFML_ROOT}/lib/cmake/SFML")
 
-find_package(SFML 2.5 COMPONENTS system windows graphics audio network REQUIRED)
+find_package(SFML 2.5 COMPONENTS system window graphics audio network REQUIRED)
 target_link_libraries(${PROJECT_NAME} sfml-system sfml-window sfml-graphics sfml-audio sfml-network)

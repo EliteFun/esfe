@@ -4,23 +4,23 @@
 // - json parser?
 // - ffmpeg (for videos)
 
-#include <ESFE/Util/State.hpp>
-#include <ESFE/Util/Game.hpp>
+#include <ESFE/Core/Scene.hpp>
+#include <ESFE/Core/Game.hpp>
 #include <ESFE/Graphics/ParticleSystem.hpp>
-#include <ESFE/Util/Animation.hpp>
+#include <ESFE/Graphics/Animation.hpp>
 #include <ESFE/GUI/Button.hpp>
 
 #include <SFML/Graphics.hpp>
 
 #include <iostream>
 
-class MenuState;
+class MenuScene;
 
-class GameState : public esfe::State
+class GameScene : public esfe::Scene
 {
 public:
     
-    GameState(esfe::Game* game)
+    GameScene(esfe::Game* game)
     {
         m_game = game;
         
@@ -30,14 +30,14 @@ public:
         
     }
     
-    ~GameState()
+    ~GameScene()
     {
     }
     
     virtual void onEvent(sf::Event &e)
     {
         if (e.type == sf::Event::MouseButtonPressed)
-            m_game->stateManager.popState();
+            m_game->sceneManager.popScene();
         else if (e.type == sf::Event::KeyReleased)
             std::cout << "Top: "    << m_text.getGlobalBounds().top    << "\n"
                       << "Left: "   << m_text.getGlobalBounds().left   << "\n"
@@ -53,18 +53,26 @@ public:
     {
         m_game->window.draw(m_text);
     }
-    
-private:
+
+    virtual void lateUpdate(float dt)
+    {
+    }
+
+    virtual void timedUpdate(float dt)
+    {
+    }
+
+  private:
     sf::Font m_font;
     sf::Text m_text;
 };
 
 
-class MenuState : public esfe::State
+class MenuScene : public esfe::Scene
 {
 public:
     
-    MenuState(esfe::Game* game)
+    MenuScene(esfe::Game* game)
     : particles(1000)
     , m_buttonStyle(
         sf::Color(0, 255, 0)       , sf::Color(0, 0, 0)         ,
@@ -83,7 +91,7 @@ public:
         m_font.loadFromFile("assets/font.ttf");
     }
     
-    ~MenuState()
+    ~MenuScene()
     {
     }
     
@@ -94,7 +102,7 @@ public:
         else if (e.type == sf::Event::MouseButtonPressed)
         {
             if (m_button.isMouseOver(m_game->window))
-                m_game->stateManager.pushState(new GameState(m_game));
+                m_game->sceneManager.pushScene(new GameScene(m_game));
             else
                 particles.setEmitter(
                     m_game->window.mapPixelToCoords(
@@ -114,6 +122,16 @@ public:
         m_game->window.draw(particles);
         m_game->window.draw(m_button);
     }
+
+    virtual void lateUpdate(float dt)
+    {
+
+    }
+
+    virtual void timedUpdate(float dt)
+    {
+
+    }
     
 private:
     
@@ -130,8 +148,8 @@ private:
 int main()
 {
     esfe::Game game(sf::VideoMode(800, 600), "ESFE");
-    game.stateManager.pushState(new MenuState ( &game ));
-	// TODO: rename state!!
+    game.sceneManager.pushScene(new MenuScene(&game));
+
     game.gameLoop();
     return 0;
 }

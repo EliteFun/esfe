@@ -36,7 +36,7 @@ public:
     
     sf::RenderWindow window; ///< game window
     
-    esfe::SceneManager stateManager; ///< game state manager // TODO: change to sceneManager
+    esfe::SceneManager sceneManager; ///< game state manager // TODO: change to sceneManager
     
 private:
     
