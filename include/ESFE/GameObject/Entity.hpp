@@ -1,0 +1,1 @@
+// Inerits form rigid body

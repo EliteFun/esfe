@@ -30,3 +30,18 @@
 *.exe
 *.out
 *.app
+
+# SFML
+/SFML*
+
+# cmake
+/cmake_modules/
+
+# build results
+/build/
+
+# VSCode
+/.vscode/
+
+#assets / resources
+/assets/
