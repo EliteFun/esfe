@@ -45,3 +45,6 @@
 
 #assets / resources
 /assets/
+
+# doxygen documenation
+/documentation

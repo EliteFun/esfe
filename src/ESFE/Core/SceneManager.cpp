@@ -48,14 +48,14 @@ void SceneManager::update ( float dt )
     if (!m_scenes.empty( )) m_scenes.top( )->update( dt );
 }
 
-void SceneManager::lateUpdate(float dt)
-{
-	if (!m_scenes.empty()) m_scenes.top()->lateUpdate(dt);
-}
-void SceneManager::timedUpdate(float dt)
-{
-	if (!m_scenes.empty()) m_scenes.top()->timedUpdate(dt);
-}
+// void SceneManager::lateUpdate(float dt)
+// {
+// 	if (!m_scenes.empty()) m_scenes.top()->lateUpdate(dt);
+// }
+// void SceneManager::timedUpdate(float dt)
+// {
+// 	if (!m_scenes.empty()) m_scenes.top()->timedUpdate(dt);
+// }
 
 void SceneManager::draw ( float dt )
 {

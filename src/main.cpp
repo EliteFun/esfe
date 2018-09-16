@@ -7,6 +7,7 @@
 #include <ESFE/Core/Scene.hpp>
 #include <ESFE/Core/Game.hpp>
 #include <ESFE/Graphics/ParticleSystem.hpp>
+#include <ESFE/Graphics/DisplaySurf.hpp>
 #include <ESFE/Graphics/Animation.hpp>
 #include <ESFE/GUI/Button.hpp>
 
@@ -21,12 +22,21 @@ class GameScene : public esfe::Scene
 public:
     
     GameScene(esfe::Game* game)
+    : ds(sf::Vector2i(800, 600), sf::Color::White)
     {
         m_game = game;
         
         m_font.loadFromFile("assets/font.ttf");
         m_text.setFont(m_font);
         m_text.setString("test");
+
+        ds.line(sf::IntRect(50, 100, 1, 1), sf::Color::Red);
+        ds.point(sf::Vector2i(2, 32), sf::Color::Green);
+        std::vector<sf::Vector2i> pts;
+        pts.push_back(sf::Vector2i(10, 10));
+        pts.push_back(sf::Vector2i(20, 20));
+        pts.push_back(sf::Vector2i(20, 9));
+        ds.polygon(pts, sf::Color::Black);
         
     }
     
@@ -52,6 +62,7 @@ public:
     virtual void draw(float dt)
     {
         m_game->window.draw(m_text);
+        m_game->window.draw(ds);
     }
 
     virtual void lateUpdate(float dt)
@@ -65,6 +76,8 @@ public:
   private:
     sf::Font m_font;
     sf::Text m_text;
+
+    esfe::DisplaySurf ds;
 };
 
 
@@ -113,8 +126,8 @@ public:
     
     virtual void update(float dt)
     {
-        sf::Time elapsed = clock.restart();
-        particles.update(elapsed);
+        // sf::Time elapsed = clock.restart();
+        particles.update(dt);
     }
     
     virtual void draw(float dt)

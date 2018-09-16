@@ -42,8 +42,8 @@ void Game::gameLoop()
         {
             timeSinceLastUpdate -= sf::milliseconds(1000 / m_framerate);
 
-            sceneManager.timedUpdate(dt);
-            sceneManager.lateUpdate(dt);
+            // sceneManager.timedUpdate(dt);
+            // sceneManager.lateUpdate(dt);
         }
         
         window.clear(m_clearColor);

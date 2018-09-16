@@ -11,4 +11,5 @@
 // childs here:
 // - RigidBody
 // - Pickup?
+// ? Rename to Node/SceneNode?
 

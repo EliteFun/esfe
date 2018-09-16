@@ -1,21 +1,19 @@
-/*   State.hpp
+/*   Scene.hpp
  * 
  * Copyright 2018 - Elite Fun
- * Version: dev 0.0.2
+ * Version: alpha 1.0
  * Date: 2018-02-24
  * 
- * State class declaration. This is
+ * Scene class declaration. This is
  * a virtual class that contain all
  * the methods and members that each
- * child State will have.
+ * child Scene will have.
  */
 
 
 #ifndef ESFE_SCENE_HPP
 #define ESFE_SCENE_HPP
 
-
-/*** HEADERS ***/
 
 #include <ESFE/Core/Game.hpp>
 
@@ -25,28 +23,36 @@
 namespace esfe
 {
 
-    
-/**
- * \class Scene
- * \code
- * //comming soon...
- * \endcode
- */
 class Scene
 {
 public:
-    
+
+    /**
+     * @brief called when there is a window event
+     * 
+     * @param e the current event
+     */
     virtual void onEvent     (sf::Event &e) = 0;
+
+    /**
+     * @brief update function called every frame 
+     * 
+     * @param dt delta time
+     */
     virtual void update      (float dt)     = 0;
-    virtual void timedUpdate (float dt)     = 0;
-    virtual void lateUpdate  (float dt)     = 0;
+
+    /**
+     * @brief draw function called every time the game renders
+     * 
+     * @param dt delta time
+     */
     virtual void draw        (float dt)     = 0;
 
 protected:
 
-    esfe::Game* m_game;
+    esfe::Game* m_game; ///< pointer to the game
 };
 
-}
+} // namespace esfe
 
 #endif // ESFE_SCENE_HPP
