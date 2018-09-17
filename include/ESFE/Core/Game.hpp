@@ -8,26 +8,22 @@
  * the window, the game loop, etc.
  */
 
-
 #ifndef ESFE_GAME_HPP
 #define ESFE_GAME_HPP
-
 
 #include <ESFE/Core/SceneManager.hpp>
 #include <ESFE/Util/Logger.hpp>
 
 #include <SFML/Graphics.hpp>
 
-
 namespace esfe
 {
 
 class State; // fwd decl
-    
+
 class Game
 {
-public:
-
+  public:
     /**
      * @brief Construct a new Game object
      * 
@@ -36,21 +32,20 @@ public:
      * @param style Uint32 style for the window
      * @param framerate Int framerate of the game
      */
-    Game(sf::VideoMode mode, const sf::String& title, sf::Uint32 style = sf::Style::Default,
+    Game(sf::VideoMode mode, const sf::String &title, sf::Uint32 style = sf::Style::Default,
          int framerate = 60);
-    
+
     /**
      * @brief starts the game loop
      * 
      */
     void gameLoop();
-    
+
     sf::RenderWindow window; ///< game window
-    
+
     esfe::SceneManager sceneManager; ///< game state manager
-    
-private:
-    
+
+  private:
     sf::Color m_clearColor; ///< window clear color
 
     int m_framerate; ///< game framerate

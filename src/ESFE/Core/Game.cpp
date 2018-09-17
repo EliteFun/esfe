@@ -8,8 +8,7 @@ Game::Game(sf::VideoMode mode, const sf::String &title, sf::Uint32 style,
            int framerate)
 : window(mode, title, style)
 {
-    window.setFramerateLimit(framerate); // TODO Use sf::Clock instead
-    window.setKeyRepeatEnabled(true);
+    window.setKeyRepeatEnabled(false);
     window.setVerticalSyncEnabled(true);
     
     m_clearColor = sf::Color::Black;
@@ -19,7 +18,6 @@ Game::Game(sf::VideoMode mode, const sf::String &title, sf::Uint32 style,
 void Game::gameLoop()
 {
     sf::Clock clock;
-    
     sf::Time timeSinceLastUpdate = sf::Time::Zero;
     
     while (window.isOpen())
@@ -33,21 +31,17 @@ void Game::gameLoop()
         }
         
         sf::Time elapsed = clock.restart();
-        float dt = elapsed.asMilliseconds();
         timeSinceLastUpdate += elapsed;
-        
-        sceneManager.update(dt);
         
         while (timeSinceLastUpdate.asMilliseconds() > 1000 / m_framerate)
         {
             timeSinceLastUpdate -= sf::milliseconds(1000 / m_framerate);
 
-            // sceneManager.timedUpdate(dt);
-            // sceneManager.lateUpdate(dt);
+            sceneManager.update(sf::milliseconds(1000/m_framerate));
         }
         
         window.clear(m_clearColor);
-        sceneManager.draw(dt);
+        sceneManager.draw(elapsed);
         window.display();
     }
 }

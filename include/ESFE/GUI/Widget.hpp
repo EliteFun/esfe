@@ -21,8 +21,7 @@
 namespace esfe
 {
     
-class ESFE_GUI_API Widget : public sf::Drawable,
-                            public sf::Transformable
+class Widget : public sf::Drawable, public sf::Transformable
 {
 public:
     virtual bool isMouseOver(sf::RenderWindow& window) = 0;

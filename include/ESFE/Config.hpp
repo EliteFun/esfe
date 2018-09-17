@@ -35,9 +35,3 @@
 #ifndef NOMINMAX
 #define NOMINMAX
 #endif
-
-// APIs
-#define ESFE_UTIL_API
-#define ESFE_GRAPHICS_API
-#define ESFE_GUI_API
-#define ESFE_CORE_API

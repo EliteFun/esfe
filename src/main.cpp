@@ -55,22 +55,14 @@ public:
                       << "Height: " << m_text.getGlobalBounds().height << std::endl;
     }
     
-    virtual void update(float dt)
+    virtual void update(sf::Time dt)
     {
     }
     
-    virtual void draw(float dt)
+    virtual void draw(sf::Time dt)
     {
         m_game->window.draw(m_text);
         m_game->window.draw(ds);
-    }
-
-    virtual void lateUpdate(float dt)
-    {
-    }
-
-    virtual void timedUpdate(float dt)
-    {
     }
 
   private:
@@ -124,26 +116,16 @@ public:
         }
     }
     
-    virtual void update(float dt)
+    virtual void update(sf::Time dt)
     {
         // sf::Time elapsed = clock.restart();
         particles.update(dt);
     }
     
-    virtual void draw(float dt)
+    virtual void draw(sf::Time dt)
     {
         m_game->window.draw(particles);
         m_game->window.draw(m_button);
-    }
-
-    virtual void lateUpdate(float dt)
-    {
-
-    }
-
-    virtual void timedUpdate(float dt)
-    {
-
     }
     
 private:

@@ -43,7 +43,7 @@ void SceneManager::popScene ( )
     m_scenes.pop( );
 }
 
-void SceneManager::update ( float dt )
+void SceneManager::update ( sf::Time dt )
 {
     if (!m_scenes.empty( )) m_scenes.top( )->update( dt );
 }
@@ -57,7 +57,7 @@ void SceneManager::update ( float dt )
 // 	if (!m_scenes.empty()) m_scenes.top()->timedUpdate(dt);
 // }
 
-void SceneManager::draw ( float dt )
+void SceneManager::draw ( sf::Time dt )
 {
     if (!m_scenes.empty( )) m_scenes.top( )->draw( dt );
 }

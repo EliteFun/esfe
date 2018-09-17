@@ -27,8 +27,7 @@ namespace esfe
 
 class Animation : public sf::Sprite
 {
-public:
-
+  public:
     /**
      * @brief Construct a new Animation object
      * 
@@ -36,28 +35,28 @@ public:
      * @param duration duration of each frame
      * @param frameSize size of a frame
      */
-    Animation (int frames, float duration, sf::Vector2i frameSize);
+    Animation(int frames, float duration, sf::Vector2i frameSize);
 
     /**
      * @brief update the animation
      * 
      * @param dt delta time
      */
-    void update (float dt);
+    void update(sf::Time dt);
 
     /**
      * @brief load the spritesheet from file
      * 
      * @param imgPath path to the file
      */
-    void loadFromFile (std::string imgPath);
+    void loadFromFile(std::string imgPath);
 
     /**
      * @brief play the animation
      * 
      */
     void play();
-    
+
     /**
      * @brief pause the animation
      * 
@@ -71,16 +70,16 @@ public:
      * @return false the animation is in pause
      */
     bool isPlaying();
-    
-private:
-    float m_duration; ///< duration of the frame
-    float m_frameTime; ///< current time between frames
-    
-    int m_currentFrame; ///< index to the current frame
-    int m_frames; ///< number of frames for the animation
-    bool m_isPlaying; ///< if the animation is playing
 
-    sf::Texture m_texture; ///< the texture of the spritesheet
+  private:
+    float m_duration; ///< duration of the frame
+    sf::Time m_frameTime; ///< current time between frames
+
+    int m_currentFrame; ///< index to the current frame
+    int m_frames;       ///< number of frames for the animation
+    bool m_isPlaying;   ///< if the animation is playing
+
+    sf::Texture m_texture;    ///< the texture of the spritesheet
     sf::Vector2i m_frameSize; ///< size of a frame
 };
 

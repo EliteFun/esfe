@@ -10,7 +10,7 @@ Animation::Animation(int frames, float duration, sf::Vector2i frameSize)
     m_frames = frames;
     
     m_currentFrame = 1;
-    m_frameTime = 0;
+    m_frameTime = sf::Time::Zero;
     
     setTexture(m_texture);
     
@@ -22,10 +22,10 @@ Animation::Animation(int frames, float duration, sf::Vector2i frameSize)
     ));
 }
 
-void Animation::update(float dt)
+void Animation::update(sf::Time dt)
 {
     m_frameTime += dt; 
-    if (m_frameTime >= m_duration)
+    if (m_frameTime.asMilliseconds() >= m_duration)
     {
         if (m_currentFrame < m_frames)
             m_currentFrame++;
@@ -39,7 +39,7 @@ void Animation::update(float dt)
             m_frameSize.y
         ));
         
-        m_frameTime = 0.0f;
+        m_frameTime = sf::Time::Zero;
     }
 }
 

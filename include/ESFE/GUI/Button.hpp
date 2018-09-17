@@ -14,14 +14,7 @@
 
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Window/Mouse.hpp>
-#include <SFML/Graphics/Color.hpp>
-#include <SFML/Graphics/Rect.hpp>
-#include <SFML/Graphics/RenderWindow.hpp>
-#include <SFML/Graphics/RenderTarget.hpp>
-#include <SFML/Graphics/RenderStates.hpp>
-#include <SFML/Graphics/Sprite.hpp>
-#include <SFML/Graphics/Text.hpp>
-#include <SFML/Graphics/Texture.hpp>
+#include <SFML/Graphics.hpp>
 
 #include <string>
 
@@ -30,7 +23,7 @@
 namespace esfe
 {
 
-struct ESFE_GUI_API ButtonStyle : GuiStyle // could remove GuiStyle inheritance
+struct ButtonStyle : GuiStyle // could remove GuiStyle inheritance
 {
     ButtonStyle(
         sf::Color    bodyColor         , sf::Color   backgroundColor  , 
@@ -55,7 +48,7 @@ struct ESFE_GUI_API ButtonStyle : GuiStyle // could remove GuiStyle inheritance
     int          characterSize;
 };
 
-class ESFE_GUI_API Button : public Widget
+class Button : public Widget
 {
 public:
     Button(ButtonStyle& style);

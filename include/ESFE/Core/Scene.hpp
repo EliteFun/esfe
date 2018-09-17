@@ -10,10 +10,8 @@
  * child Scene will have.
  */
 
-
 #ifndef ESFE_SCENE_HPP
 #define ESFE_SCENE_HPP
-
 
 #include <ESFE/Core/Game.hpp>
 
@@ -25,32 +23,30 @@ namespace esfe
 
 class Scene
 {
-public:
-
+  public:
     /**
      * @brief called when there is a window event
      * 
      * @param e the current event
      */
-    virtual void onEvent     (sf::Event &e) = 0;
+    virtual void onEvent(sf::Event &e) = 0;
 
     /**
      * @brief update function called every frame 
      * 
      * @param dt delta time
      */
-    virtual void update      (float dt)     = 0;
+    virtual void update(sf::Time dt) = 0;
 
     /**
      * @brief draw function called every time the game renders
      * 
      * @param dt delta time
      */
-    virtual void draw        (float dt)     = 0;
+    virtual void draw(sf::Time dt) = 0;
 
-protected:
-
-    esfe::Game* m_game; ///< pointer to the game
+  protected:
+    esfe::Game *m_game; ///< pointer to the game
 };
 
 } // namespace esfe

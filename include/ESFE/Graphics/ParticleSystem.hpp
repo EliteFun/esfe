@@ -28,15 +28,14 @@ namespace esfe
 
 class ParticleSystem : public sf::Drawable, public sf::Transformable
 {
-public:
-    
+  public:
     /**
      * @brief construct a new ParticleSystem object
      * 
      * @param count number of particles
      */
     ParticleSystem(unsigned int count);
-    
+
     /**
      * @brief set the emitter position
      * 
@@ -49,18 +48,17 @@ public:
      * 
      * @param dt delta time
      */
-    void update(float dt);
-    
-private:
+    void update(sf::Time dt);
 
+  private:
     /**
      * @brief default Drawable draw function
      * 
      * @param target render target
      * @param states render states
      */
-    virtual void draw(sf::RenderTarget & target, sf::RenderStates states) const;
-    
+    virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
+
     /**
      * @brief single particle struct
      * 
@@ -68,21 +66,21 @@ private:
     struct Particle
     {
         sf::Vector2f velocity; ///< velocity of the particle
-        float lifetime; ///< lifetime of the particle
+        sf::Time lifetime;        ///< lifetime of the particle
     };
-    
+
     /**
      * @brief reuse the particle by moving it to the emitter
      * 
      * @param index index of the particle
      */
     void resetParticle(std::size_t index);
-    
+
     std::vector<Particle> m_particles; ///< array of particles
-    sf::VertexArray m_vertices; ///< verticies of the particles
-    float m_lifetime; ///< lifetime of all the particles
-    sf::Vector2f m_emitter; ///< position of the emitter
-    
+    sf::VertexArray m_vertices;        ///< verticies of the particles
+    sf::Time m_lifetime;                  ///< lifetime of all the particles
+    sf::Vector2f m_emitter;            ///< position of the emitter
+
     Random randomGen; ///< random number generator
 };
 

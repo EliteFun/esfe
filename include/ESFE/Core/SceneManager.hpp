@@ -9,83 +9,77 @@
  * draw, etc. to the top scene when necessary
  */
 
-
 #ifndef ESFE_SCENEMANAGER_HPP
 #define ESFE_SCENEMANAGER_HPP
-
 
 #include <SFML/Window/Event.hpp>
 
 #include <stack>
 
-
-
 namespace esfe
 {
 
 class Scene; // fwd decl
-    
+
 class SceneManager
 {
-    public:
-        
-        /**
-         * @brief Destroy the Scene Manager object
-         * 
-         */
-        ~SceneManager ();
+  public:
+    /**
+     * @brief Destroy the Scene Manager object
+     * 
+     */
+    ~SceneManager();
 
-        /**
-         * @brief change the current scene
-         * 
-         * @param scene new scene
-         */
-        void changeScene (esfe::Scene* scene);
+    /**
+     * @brief change the current scene
+     * 
+     * @param scene new scene
+     */
+    void changeScene(esfe::Scene *scene);
 
-        /**
-         * @brief add a new scene to the stack
-         * 
-         * @param scene new scene
-         */
-        void pushScene (esfe::Scene* scene);
+    /**
+     * @brief add a new scene to the stack
+     * 
+     * @param scene new scene
+     */
+    void pushScene(esfe::Scene *scene);
 
-        /**
-         * @brief remove the top scene of the stack
-         * 
-         */
-        void popScene ();
+    /**
+     * @brief remove the top scene of the stack
+     * 
+     */
+    void popScene();
 
-        /**
-         * @brief Get the Scene object
-         * 
-         * @return esfe::Scene* 
-         */
-        esfe::Scene* getScene ();
+    /**
+     * @brief Get the Scene object
+     * 
+     * @return esfe::Scene* 
+     */
+    esfe::Scene *getScene();
 
-        /**
-         * @brief update the top scene
-         * 
-         * @param dt delta time
-         */
-        void update (float dt);
+    /**
+     * @brief update the top scene
+     * 
+     * @param dt delta time
+     */
+    void update(sf::Time dt);
 
-        /**
-         * @brief draw the top scene
-         * 
-         * @param dt delta time
-         */
-        void draw (float dt);
+    /**
+     * @brief draw the top scene
+     * 
+     * @param dt delta time
+     */
+    void draw(sf::Time dt);
 
-        /**
-         * @brief send event to the current scene
-         * 
-         * @param e current event
-         */
-        void onEvent (sf::Event &e);
+    /**
+     * @brief send event to the current scene
+     * 
+     * @param e current event
+     */
+    void onEvent(sf::Event &e);
 
-    private:
-
-        std::stack<esfe::Scene*> m_scenes; ///< stack of all the scenes
+  private:
+    std::stack<esfe::Scene *> m_scenes; ///< stack of all the scenes
 };
 
 } // namespace esfe
